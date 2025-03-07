@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hitung Mundur Idul Fitri ⏳</title>
+    <style>
+        /* Default Dark Mode */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #0c1c26;
+            color: white;
+            padding: 20px;
+            transition: background 0.5s, color 0.5s;
+        }
+        h1 {
+            font-size: 28px;
+        }
+        #countdown {
+            font-size: 24px;
+            background: #1e3a4d;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 20px;
+            transition: background 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌙 Hitung Mundur Idul Fitri 2025</h1>
+    <p><small>*Estimasi tanggal Idul Fitri 31 Maret 2025</small></p>
+    <div id="countdown"></div>
+    <br>
+    <script>
+        function countdown() {
+            const ramadhanDate = new Date("March 31, 2025 00:00:00").getTime(); // Ubah dengan tanggal idul fitris
+            const now = new Date().getTime();
+            const timeLeft = ramadhanDate - now;
+
+            if (timeLeft < 0) {
+                document.getElementById("countdown").innerHTML = "Idul Fitri telah tiba! 🎉";
+                return;
+            }
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = 
+                `${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik`;
+
+            setTimeout(countdown, 1000);
+        }
+
+        countdown();
+    </script>
+</body>
+</html>
